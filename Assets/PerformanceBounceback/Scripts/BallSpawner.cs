@@ -8,8 +8,8 @@ public class BallSpawner : MonoBehaviour {
 
     public GameObject pooledBall; //the prefab of the object in the object pool
     public int ballsAmount = 20; //the number of objects you want in the object pool
-    public List<GameObject> pooledBalls; //the object pool
-    public static int ballPoolNum = 0; //a number used to cycle through the pooled objects
+	public List<GameObject> pooledBalls = new List<GameObject>(); //the object pool
+	public static int ballPoolNum = 0; //a number used to cycle through the pooled objects
 
     private float cooldown;
     private float cooldownLength = 0.5f;
@@ -63,7 +63,7 @@ public GameObject GetPooledBall()
 
     void SpawnBall()
     {
-        GameObject selectedBall = BallSpawner.current.GetPooledBall();
+        GameObject selectedBall = GetPooledBall();
         selectedBall.transform.position = transform.position;
         Rigidbody selectedRigidbody = selectedBall.GetComponent<Rigidbody>();
         selectedRigidbody.velocity = Vector3.zero;
