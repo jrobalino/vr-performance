@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-    //public GameManager gameManager;
+	int oldScore;
 	public Text text;
 
-	// Use this for initialization
-	void Start () {
-        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		//text = GetComponentInChildren<Text>();
+	void Update()
+	{
+		if (GameManager.score != oldScore)
+		{
+			oldScore = GameManager.score;
+			ChangeScoreUI();
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-        text.text = "Score: " + GameManager.score.ToString();
-
-		
+	void ChangeScoreUI()
+	{
+		text.text = "Score: " + GameManager.score.ToString();
 	}
 }
